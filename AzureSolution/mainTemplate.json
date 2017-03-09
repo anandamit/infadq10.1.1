@@ -240,14 +240,14 @@
                 "description": "Informatica domain license key file url"
             }
         },
-        "baseUrl": {
-            "type": "string",
-            "metadata": {
-                "description": "Base URL for Marketplace",
-                "artifactsBaseUrl": "https://raw.githubusercontent.com/vijayanand17/infapc10.1.1/master"
-            },
-            "defaultValue": "https://raw.githubusercontent.com/vijayanand17/infapc10.1.1/master"
+      "baseUrl": {
+        "type": "string",
+        "metadata": {
+          "description": "Base URL for Marketplace",
+          "artifactsBaseUrl": "https://raw.githubusercontent.com/anandamit/infadq10.1.1/master/AzureSolution"
         },
+        "defaultValue": "https://raw.githubusercontent.com/anandamit/infadq10.1.1/master/AzureSolution"
+      },
         "informaticaTags": {
             "type": "object",
             "defaultValue": {
