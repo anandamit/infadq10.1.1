@@ -1,50 +1,68 @@
 ﻿{
     "$schema": "http://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
-    "parameters": {
-        "location": {
-            "type": "string"
-        },
-        "storageName": {
-            "type": "string"
-        },
-        "dbVMName": {
-            "type": "string"
-        },
-        "dbVMAdminUsername": {
-            "type": "string"
-        },
-        "dbVMAdminPassword": {
-            "type": "securestring"
-        },
-        "dbVMSize": {
-            "type": "string"
-        },
-        "dbUser": {
-            "type": "string"
-        },
-        "dbPassword": {
-            "type": "securestring"
-        },
-        "vnetName": {
-            "type": "string"
-        },
-        "subnetName": {
-            "type": "string"
-        },
-        "subnetId": {
-            "type": "string"
-        },
-        "nsgName": {
-            "type": "string"
-        },
-        "baseUrl": {
-            "type": "string"
-        },
-        "informaticaTags": {
-            "type": "object" 
-        }
+  "parameters": {
+    "location": {
+      "type": "string"
     },
+    "storageName": {
+      "type": "string"
+    },
+    "dbVMName": {
+      "type": "string"
+    },
+    "dbVMAdminUsername": {
+      "type": "string"
+    },
+    "dbVMAdminPassword": {
+      "type": "securestring"
+    },
+    "dbVMSize": {
+      "type": "string"
+    },
+    "dbUser": {
+      "type": "string"
+    },
+    "dbPassword": {
+      "type": "securestring"
+    },
+    "vnetName": {
+      "type": "string"
+    },
+    "subnetName": {
+      "type": "string"
+    },
+    "subnetId": {
+      "type": "string"
+    },
+    "nsgName": {
+      "type": "string"
+    },
+    "baseUrl": {
+      "type": "string"
+    },
+    "mrsdbuser": {
+      "type": "string"
+    },
+    "mrsdbpwd": {
+      "type": "securestring"
+    },
+    "refdatadbuser": {
+      "type": "string"
+    },
+    "refdatadbpwd": {
+      "type": "securestring"
+    },
+    "profiledbuser": {
+      "type": "string"
+    },
+    "profiledbpwd": {
+      "type": "securestring"
+    },
+    "informaticaTags": {
+      "type": "object"
+    }
+  },
     "variables": {
         "publicDNSName": "[toLower(concat(parameters('dbVMName'), uniqueString(resourceGroup().id, deployment().name)))]",
         "dbVMNicName": "[concat(parameters('dbVMName'), 'Nic')]",
@@ -180,9 +198,9 @@
                                 "[concat(variables('extScriptURI'),  variables('extScriptFile'))]"
                             ]
                         },
-                        "protectedSettings": {
-                            "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -file ', variables('extScriptFile'), ' -dbUserName \"', parameters('DBUser'), '\" -dbPassword \"', parameters('DBPassword'), '\"')]"
-                        }
+                      "protectedSettings": {
+                        "commandToExecute": "[concat('powershell -ExecutionPolicy Unrestricted -file ', variables('extScriptFile'), ' -dbUserName \"', parameters('DBUser'), '\" -dbPassword \"', parameters('DBPassword'), '\" -dbmrsuser \"', parameters('mrsdbuser'), '\" -dbmrspwd \"', parameters('mrsdbpwd'), '\" -dbrefdatauser \"', parameters('refdatadbuser'), '\" -dbrefdatapwd \"', parameters('refdatadbpwd'), '\" -dbprofileuser \"', parameters('profiledbuser'), '\" -dbprofilepwd \"', parameters('profiledbpwd'), '\"')]"
+                      }
                     }
                 }
             ]
