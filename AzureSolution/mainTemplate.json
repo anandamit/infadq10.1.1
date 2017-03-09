@@ -86,8 +86,7 @@
     "dbType": {
       "type": "string",
       "allowedValues": [
-        "sqlserver",
-        "sqlserverazure"
+        "sqlserver"
       ],
       "defaultValue": "sqlserver",
       "metadata": {
